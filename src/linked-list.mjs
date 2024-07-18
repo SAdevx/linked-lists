@@ -132,7 +132,7 @@ function LinkedList(){
             console.log("INDEX NOT FOUND");
             return;
         }
-        
+
         let currNode   = getHeadNode();
 
         let newNode    = Node();
@@ -144,29 +144,43 @@ function LinkedList(){
         let prevNode = dummyNode;
         let indexCount = -1;
      
-        while(indexCount !== index-1){
+        while(indexCount++ !== index-1){
             currNode = currNode.getNextNode();
             prevNode = prevNode.getNextNode();
-            indexCount++;
         }
         newNode.setNextNode(currNode);
         prevNode.setNextNode(newNode);
         setHeadNode(dummyNode.getNextNode());
     }
 
-    /*const removeAt = (index) => {
-        let currNode = getHeadNode();
-        let indexCount = 0;
-        let prev = null;
-        while(currNode){
-            if(index === value){
-                prev.next = currNode.next;
-            }
-        } 
-    }*/
+    const removeAt = (index) => {
+        let listSize = size();
+        
+        if(listSize < index){
+            console.log("INDEX NOT FOUND");
+            return;
+        }
+
+        let currNode   = getHeadNode();
+
+        let dummyNode = Node();
+        dummyNode.setNextNode(currNode);
+
+        let prevNode = dummyNode;
+        let indexCount = -1;
+     
+        while(indexCount++ !== index-1){
+            currNode = currNode.getNextNode();
+            prevNode = prevNode.getNextNode();
+        }
+        //if the current node is null then we can't remove it so return
+        if(currNode === null) return console.log("INDEX NOT FOUND");;
+        prevNode.setNextNode(currNode.getNextNode());
+        setHeadNode(dummyNode.getNextNode());
+    }
 
     return { append, prepend, size, getHeadNode, getTailNode, at,
-        pop, contains, find, toString, insertAt,
+        pop, contains, find, toString, insertAt, removeAt,
     }
 }
 
