@@ -4,7 +4,7 @@ const list = LinkedList();
 
 //append to the end of the list
 list.append("dog");
-list.append("cat");
+/*list.append("cat");
 list.append("parrot");
 list.append("hamster");
 list.append("snake");
@@ -37,5 +37,13 @@ console.log(list.contains("snake"));
 console.log(list.contains("squirrel"));
 
 console.log(list.find("turtle"));
-console.log(list.find("cat"));
+console.log(list.find("cat"));*/
+
+console.log(list.toString());
+
+list.insertAt('sheep', 0);
+list.insertAt('Hippopotamus', 6)
+list.insertAt('Ox', 4)
+console.log(list.toString())
+
 

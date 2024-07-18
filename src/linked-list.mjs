@@ -126,15 +126,47 @@ function LinkedList(){
     }
 
     const insertAt = (value, index) => {
+        let listSize = size();
         
+        if(listSize < index){
+            console.log("INDEX NOT FOUND");
+            return;
+        }
+        
+        let currNode   = getHeadNode();
+
+        let newNode    = Node();
+        newNode.setValue(value);
+
+        let dummyNode = Node();
+        dummyNode.setNextNode(currNode);
+
+        let prevNode = dummyNode;
+        let indexCount = -1;
+     
+        while(indexCount !== index-1){
+            currNode = currNode.getNextNode();
+            prevNode = prevNode.getNextNode();
+            indexCount++;
+        }
+        newNode.setNextNode(currNode);
+        prevNode.setNextNode(newNode);
+        setHeadNode(dummyNode.getNextNode());
     }
 
-    const removeAt = (index) => {
-        
-    }
+    /*const removeAt = (index) => {
+        let currNode = getHeadNode();
+        let indexCount = 0;
+        let prev = null;
+        while(currNode){
+            if(index === value){
+                prev.next = currNode.next;
+            }
+        } 
+    }*/
 
     return { append, prepend, size, getHeadNode, getTailNode, at,
-        pop, contains, find, toString, insertAt, removeAt
+        pop, contains, find, toString, insertAt,
     }
 }
 
